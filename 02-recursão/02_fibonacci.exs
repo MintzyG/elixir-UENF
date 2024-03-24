@@ -15,7 +15,6 @@ defmodule Fibonnacci do
   """
   @spec run(integer) :: list(integer)
   def run(n) do
-    # FIXME
   end
 end
 

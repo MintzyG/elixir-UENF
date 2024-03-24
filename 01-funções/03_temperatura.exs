@@ -19,7 +19,22 @@ defmodule Temperatura do
   """
   @spec run(integer, :fahrenheit | :kelvin) :: float | :error
   def run(celsius, medida) do
-    # FIXME
+    cond do
+      celsius == nil ->
+        :error
+
+      !is_integer(celsius) ->
+        :error
+
+      true ->
+        case medida do
+          :kelvin ->
+            celsius + 273.15
+
+          :fahrenheit ->
+            9 * celsius / 5 + 32
+        end
+    end
   end
 end
 

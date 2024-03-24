@@ -19,7 +19,14 @@ defmodule Idade do
   """
   @spec run(integer) :: :infantil | :adolescente | :adulto | :idoso | :error
   def run(idade) do
-    # FIXME
+    cond do
+      !is_integer(idade) -> :error
+      idade < 0 -> :error
+      idade <= 12 -> :infantil
+      idade <= 24 -> :adolescente
+      idade <= 59 -> :adulto
+      idade >= 60 -> :idoso
+    end
   end
 end
 

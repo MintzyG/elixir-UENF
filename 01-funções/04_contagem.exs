@@ -15,9 +15,31 @@ defmodule Contagem do
   - [`for/1`](https://hexdocs.pm/elixir/Kernel.SpecialForms.html#for/1)
   - [`Map`](https://hexdocs.pm/elixir/Map.html)
   """
+
+  # Esse ta bem hard pra mim ;-; 
+  def mm(frase, palavra) do
+    m = Map.new()
+    Map.put(m, palavra, 0)
+
+    l = String.split(frase)
+
+    for w <- l do
+      if w == palavra do
+        Map.get_and_update(m, palavra, fn current_value ->
+          {current_value, current_value + 1}
+        end)
+      end
+    end
+
+    Map.get(m, palavra)
+  end
+
   @spec run(String.t(), String.t()) :: integer
   def run(frase, palavra) do
-    # FIXME
+    cond do
+      !String.length(frase) -> 0
+      true -> mm(frase, palavra)
+    end
   end
 end
 
