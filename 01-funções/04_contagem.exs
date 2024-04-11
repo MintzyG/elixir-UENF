@@ -15,30 +15,20 @@ defmodule Contagem do
   - [`for/1`](https://hexdocs.pm/elixir/Kernel.SpecialForms.html#for/1)
   - [`Map`](https://hexdocs.pm/elixir/Map.html)
   """
+  @spec run(String.t(), String.t()) :: integer
+  def run(sentence, palavra) do
+    tokens =
+      sentence
+      |> String.replace(~r/\./u, " ")
+      |> String.split()
 
-  # Esse ta bem hard pra mim ;-; 
-  def mm(frase, palavra) do
-    m = Map.new()
-    Map.put(m, palavra, 0)
-
-    l = String.split(frase)
-
-    for w <- l do
-      if w == palavra do
-        Map.get_and_update(m, palavra, fn current_value ->
-          {current_value, current_value + 1}
-        end)
-      end
-    end
-
-    Map.get(m, palavra)
+    Enum.reduce(tokens, 0, &count_word(&1, &2, palavra))
   end
 
-  @spec run(String.t(), String.t()) :: integer
-  def run(frase, palavra) do
+  def count_word(word, x, palavra) do
     cond do
-      !String.length(frase) -> 0
-      true -> mm(frase, palavra)
+      word != palavra -> x
+      true -> x + 1
     end
   end
 end

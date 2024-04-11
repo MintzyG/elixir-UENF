@@ -19,8 +19,9 @@ defmodule BuscaBinaria do
   """
   @spec run(list(integer), integer) :: boolean
   def run(xs, x) do
-    # FIXME
-    :error
+    cond do
+      length(xs) == 1 && List.first(xs) == x -> true
+    end
   end
 end
 

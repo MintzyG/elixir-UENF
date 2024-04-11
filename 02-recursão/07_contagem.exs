@@ -1,3 +1,5 @@
+ExUnit.start()
+
 defmodule ContagemElementos do
   @doc """
   Calcula a quantidade de elementos presentes em uma lista.
@@ -12,7 +14,10 @@ defmodule ContagemElementos do
   """
   @spec run(list) :: integer
   def run(lista) do
-    # FIXME
+    cond do
+      !lista -> 0
+      true -> 1
+    end
   end
 end
 

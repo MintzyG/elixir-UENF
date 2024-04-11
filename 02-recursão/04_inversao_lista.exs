@@ -7,7 +7,18 @@ defmodule InversaoLista do
   """
   @spec run(list(integer)) :: list(integer)
   def run(xs) do
-    # FIXME
+    cond do
+      length(xs) == 0 ->
+        xs
+
+      length(xs) > 1 ->
+        [h | t] = xs
+        x = run(t)
+        List.insert_at(x, List.last(x) + 1, h)
+
+      length(xs) == 1 ->
+        xs
+    end
   end
 end
 

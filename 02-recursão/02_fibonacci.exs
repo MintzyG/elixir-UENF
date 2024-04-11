@@ -15,6 +15,10 @@ defmodule Fibonnacci do
   """
   @spec run(integer) :: list(integer)
   def run(n) do
+    cond do
+      n == 0 || n == 1 -> n
+      true -> run(n - 1) + run(n - 2)
+    end
   end
 end
 
@@ -22,8 +26,8 @@ defmodule FibonnacciTest do
   use ExUnit.Case, async: true
 
   test "deve retornar a sequência de fibonnacci com seus valores corretos" do
-    assert Fibonnacci.run(2) == [1, 1]
-    assert Fibonnacci.run(5) == [1, 1, 2, 3, 5]
     assert Fibonnacci.run(8) == [1, 1, 2, 3, 5, 8, 13, 21]
+    assert Fibonnacci.run(5) == [1, 1, 2, 3, 5]
+    assert Fibonnacci.run(2) == [1, 1]
   end
 end
