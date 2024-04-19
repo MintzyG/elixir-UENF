@@ -14,7 +14,24 @@ defmodule CompreensaoLista do
   """
   @spec run(list(integer)) :: list(integer)
   def run(nums) do
-    # FIXME
+    filter(nums)
+    |> quadri()
+  end
+
+  def quadri(nums) do
+    for x <- nums, do: x * 4
+  end
+
+  def filter([head | tail] = _nums) do
+    if(rem(head, 2) == 0) do
+      [head | filter(tail)]
+    else
+      filter(tail)
+    end
+  end
+
+  def filter([]) do
+    []
   end
 end
 

@@ -1,5 +1,12 @@
 ExUnit.start()
 
+defmodule MinhaStruct do
+  defstruct [:name]
+  # name: ""
+  # [name: ""]
+  # [{:name, ""}]
+end
+
 defmodule ImplementacaoProtocolo do
   @doc """
   Implementa um protocolo para formatar structs diferentes.
@@ -13,9 +20,20 @@ defmodule ImplementacaoProtocolo do
       iex> ImplementacaoProtocolo.formatar(%MinhaStruct{name: "Elixir"})
       "MinhaStruct formatada: Elixir"
   """
+
+  defprotocol Formatar do
+    def to_string(data)
+  end
+
+  defimpl Formatar, for: MinhaStruct do
+    def to_string(data) do
+      "MinhaStruct formatada: #{data.name}"
+    end
+  end
+
   @spec formatar(map) :: String.t()
   def formatar(struct) do
-    # FIXME
+    Formatar.to_string(struct)
   end
 end
 

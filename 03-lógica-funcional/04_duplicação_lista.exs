@@ -16,8 +16,12 @@ defmodule DuplicacaoLista do
       []
   """
   @spec run(list(any)) :: list(any)
-  def run(lista) do
-    # FIXME
+  def run([head | tail] = lista) do
+    [head, head | run(tail)]
+  end
+
+  def run([]) do
+    []
   end
 end
 

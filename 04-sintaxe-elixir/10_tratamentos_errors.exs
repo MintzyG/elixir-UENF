@@ -13,8 +13,13 @@ defmodule TratamentoErros do
       "Chave não encontrada"
   """
   @spec run(map, atom) :: String.t()
-  def run(mapa, chave) do
-    # FIXME
+  def run(mapa, _chave) do
+    try do
+      _v = mapa.chave
+    rescue
+      KeyError ->
+        "Chave não encontrada"
+    end
   end
 end
 

@@ -12,9 +12,18 @@ defmodule UsoAlias do
       iex> UsoAlias.run()
       :ok
   """
+  defmodule MeuDeusDoCeuMeCriaramAssimParaFazerOsOutrosSofreremNaoEhPossivelEuOdeioOMeuPropositoAdeusMundo do
+    def hi() do
+      :ok
+    end
+  end
+
   @spec run() :: atom
   def run() do
-    # FIXME
+    alias MeuDeusDoCeuMeCriaramAssimParaFazerOsOutrosSofreremNaoEhPossivelEuOdeioOMeuPropositoAdeusMundo,
+      as: HappyNow
+
+    HappyNow.hi()
   end
 end
 

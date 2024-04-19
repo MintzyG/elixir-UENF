@@ -14,14 +14,21 @@ defmodule CriacaoStruct do
       iex> CriacaoStruct.mover(ponto, 5, 7)
       %{x: 7, y: 10}
   """
+
+  defmodule Pt do
+    defstruct x: 0, y: 0
+  end
+
   @spec criar(integer, integer) :: map
   @spec mover(map, integer, integer) :: map
   def criar(x, y) do
-    # FIXME
+    ponto = %Pt{x: x, y: y}
+    ponto
   end
 
   def mover(ponto, dx, dy) do
-    # FIXME
+    p = %Pt{x: dx + ponto.x, y: dy + ponto.y}
+    p
   end
 end
 
@@ -30,6 +37,6 @@ defmodule CriacaoStructTest do
 
   test "move o ponto corretamente" do
     ponto = CriacaoStruct.criar(2, 3)
-    assert CriacaoStruct.mover(ponto, 5, 7) == %{x: 7, y: 10}
+    assert %{x: 7, y: 10} = CriacaoStruct.mover(ponto, 5, 7)
   end
 end

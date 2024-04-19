@@ -16,8 +16,18 @@ defmodule FiltrarSomar do
       0
   """
   @spec run(list(integer), integer) :: integer
-  def run(nums, n) do
-    # FIXME
+  def run([head | tail] = _nums, n) do
+    cond do
+      head > n ->
+        head + run(tail, n)
+
+      head <= n ->
+        run(tail, n)
+    end
+  end
+
+  def run([], n) do
+    0
   end
 end
 

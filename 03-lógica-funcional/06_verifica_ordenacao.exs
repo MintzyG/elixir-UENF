@@ -17,8 +17,13 @@ defmodule ListaOrdenada do
       false
   """
   @spec run(list(integer)) :: boolean
-  def run(nums) do
-    # FIXME
+  def run([head | tail] = nums) do
+    cond do
+    end
+  end
+
+  def run([]) do
+    false
   end
 end
 

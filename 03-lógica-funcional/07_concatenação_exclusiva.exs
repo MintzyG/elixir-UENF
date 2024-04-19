@@ -18,7 +18,6 @@ defmodule ConcatenacaoExclusiva do
   """
   @spec run(list(any), list(any)) :: list(any)
   def run(lista1, lista2) do
-    # FIXME
   end
 end
 

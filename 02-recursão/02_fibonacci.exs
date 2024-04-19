@@ -13,13 +13,23 @@ defmodule Fibonnacci do
   Lembre que a sequência de fibonnacci se dá pela soma
   de um número da sequência somado ao seu antecessor.
   """
+
+  def lister(n, []) do
+    list = 
+  end
+
   @spec run(integer) :: list(integer)
   def run(n) do
+    lister(n, [])
+  end
+
+  def fib(n) do
     cond do
       n == 0 || n == 1 -> n
       true -> run(n - 1) + run(n - 2)
     end
   end
+
 end
 
 defmodule FibonnacciTest do

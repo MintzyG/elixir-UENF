@@ -18,7 +18,17 @@ defmodule SomaImpares do
   """
   @spec run(list(integer)) :: integer
   def run(nums) do
-    # FIXME
+    Enum.reduce(nums, 0, fn x, acc ->
+      if rem(x, 2) == 1 do
+        acc + x
+      else
+        acc
+      end
+    end)
+  end
+
+  def run([]) do
+    0
   end
 end
 

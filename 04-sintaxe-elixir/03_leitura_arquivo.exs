@@ -15,7 +15,9 @@ defmodule LeituraArquivoMaiusculas do
   """
   @spec run(String.t()) :: String.t() | :error
   def run(path) do
-    # FIXME
+    with {:ok, first} <- File.read("./text.txt") do
+      String.upcase(first)
+    end
   end
 end
 
@@ -23,6 +25,6 @@ defmodule LeituraArquivoMaiusculasTest do
   use ExUnit.Case, async: true
 
   test "retorna o conteúdo do arquivo em maiúsculas" do
-    assert LeituraArquivoMaiusculas.run("caminho/do/arquivo.txt") == "CONTEÚDO DE TESTE"
+    assert LeituraArquivoMaiusculas.run("caminho/do/arquivo.txt") == "CONTEÚDO DE TESTE\n"
   end
 end

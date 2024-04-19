@@ -9,17 +9,20 @@ defmodule FiltragemLista do
       iex> FiltragemLista.run([1, 2, 3, 4, 5], fn x -> rem(x, 2) == 0 end)
       [2, 4]
   """
+
   @spec run(list, (any -> boolean)) :: list
-  def run(lista, filtro) do
+  def run([head | tail] = list, filtro) do
     cond do
-      length(lista) == 1 ->
-        if filtro(List.first(lista)) do
-          lista
-        end
+      filtro.(head) ->
+        [head | run(tail, filtro)]
 
       true ->
-        [head | tail] = lista
+        run(tail, filtro)
     end
+  end
+
+  def run([], _filtro) do
+    []
   end
 end
 
